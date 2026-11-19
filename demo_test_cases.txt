@@ -1,0 +1,37 @@
+MINICALC COMPILER - DEMO TEST CASES
+
+VALID
+10 + 5                  -> 15
+10 - 5                  -> 5
+10 * 5                  -> 50
+10 + 5 * 2              -> 20      (precedence)
+(10 + 5) * 2            -> 30      (parentheses)
+20 - 6 * 2              -> 8
+2 - 5 - 3               -> -6      (left associativity)
+-4 * 3 + 2              -> -10     (leading minus)
+-5 + 2                  -> -3
+(-5) * 2                -> -10
+-(2 + 3)                -> -5
+2.5 * 4                 -> 10
+
+SYNTAX ERRORS
+2-+5                    -> expected a number or '(' but found '+' at position 2
+2--5                    -> expected a number or '(' but found '-' at position 2
+2*-3                    -> expected a number or '(' but found '-' at position 2
+10 + * 5                -> expected a number or '(' but found '*'
+10 +                    -> expected a number or '(' but found end of input
+(3 + 2                  -> expected ')' but found end of input
+3 + 2)                  -> expected an operator or end of input but found ')'
+2 3                     -> expected an operator or end of input but found '3'
+()                      -> expected a number or '(' but found ')'
+
+LEXICAL ERRORS
+8 / 2                   -> unsupported character '/'
+abc                     -> unsupported character 'a'
+1.2.3                   -> number has two decimal points
+
+SEMANTIC ERROR
+(a number with 400 digits)            -> number is too large to represent
+(200-digit number) * (200-digit number) -> arithmetic overflow
+
+TIP: type `test` inside the program to run all of these (and more) automatically.
